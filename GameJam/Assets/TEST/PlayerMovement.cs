@@ -20,7 +20,9 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isGrounded;
     private bool doubleJump = false;
-    
+
+   
+
     private void Awake()
     {
         playerControler = this.gameObject.GetComponent<CharacterController>();
@@ -32,6 +34,19 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Jumping();
         DoubleJumping();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "kup")
+        {
+            Debug.Log("E TUŞUNA BASIN");
+            if (other.gameObject.name == "kup" && Input.GetKeyDown(KeyCode.E))
+            {
+                //Destroy(other.gameObject);
+                //other.gameObject.GetComponent<Transform>().localScale = new Vector3(20f, 20f, 20f);
+            }
+        }
     }
 
     private void Jumping()
